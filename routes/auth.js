@@ -3,9 +3,12 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
 const bcrypt = require('bcrypt');
-const { body , validationResult } = require('express-validator');
+const { body , validationResult, ExpressValidator } = require('express-validator');
 var jwt = require('jsonwebtoken');
 
+const JWT_SECRET = "imgonnagetuback";
+//Router:1
+//creating a user using post & no login req
 router.post("/signUp",[ //adding express validators
     body("name","Enter a valid name").isLength({min: 3}),
     body("email","Enter a valid email").isEmail(),
@@ -47,11 +50,55 @@ const data = {
 }
 catch(err){
   console.log(err.message) 
-  res.status(500).send("Something is wrong");
+  res.status(500).send("Something went wrong");
 } 
-  
-
-
 })
+
+
+
+
+
+//authenticate a user using post no login req
+//login 
+
+//Router:2
+router.post('/login',[
+  body("email","Enter a valid email").isEmail(),
+  body('password','password must be atleast 8 charecters long ').isLength({min : 8}),
+],async (req,res) =>{
+  // to check if there are errors by express validators
+  const errors = validationResult(req);
+  if(!errors.isEmpty()){ //if there is an error returning bad request
+    return res.status(400).json({errors : errors.array()})
+  }
+  /* so now there r no errors of it being correctly typed like ususal...but this is login endpoint so from this i want to check what
+  i have enterd is correct or not that is am i an existing user*/
+  const {email,password} = req.body; 
+  try{
+    const user = await User.findOne({email});  
+    if(!user){
+      res.status(400).json({error : "Please login with correct credentials"})
+    }
+    const passcompare = await bcrypt.compare(password,user.password)
+    if(!passcompare){
+      res.status(400).send("Please login with correct credentials") //if password doesnt match
+    }
+    const data = {
+      user : {
+        id : user.id
+      }
+    }
+    const authToken = jwt.sign(data,JWT_SECRET)
+    res.json({authToken})
+  }
+  catch(error){
+    console.log(error.message);
+    res.status(500).send("Internal server error")
+
+  }
+})
+
+//Router:3 
+//
 
 module.exports = router
