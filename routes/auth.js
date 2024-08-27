@@ -5,6 +5,7 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt');
 const { body , validationResult, ExpressValidator } = require('express-validator');
 var jwt = require('jsonwebtoken');
+var fetchuser = require('../middleware/fetchuser')
 
 const JWT_SECRET = "imgonnagetuback";
 //Router:1
@@ -99,6 +100,21 @@ router.post('/login',[
 })
 
 //Router:3 
-//
+//logging in and getting all details 
+router.post('/getUser',fetchuser, async (req,res)=>{
+
+  try{
+    let userId = req.user.id;
+    const user = await User.findById(userId)
+    res.send(user)
+  
+  }catch(error){
+    console.log(error.message);
+    res.status(500).send("Internal server error")
+  }
+  
+}
+)
+
 
 module.exports = router
