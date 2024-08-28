@@ -8,8 +8,7 @@ var jwt = require('jsonwebtoken');
 var fetchuser = require('../middleware/fetchuser')
 
 const JWT_SECRET = "imgonnagetuback";
-//Router:1
-//creating a user using post & no login req
+//Router:1 creating a user using post & no login req
 router.post("/signUp",[ //adding express validators
     body("name","Enter a valid name").isLength({min: 3}),
     body("email","Enter a valid email").isEmail(),
