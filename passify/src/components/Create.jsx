@@ -5,18 +5,18 @@ function Create() {
    
     return (
         <>
-            <div className="createform,centre">
+            <div className="createform centre">
                 <form>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
+                        <label htmlFor="name" class="htmlForm-label">Name</label>
                         <input type="text" class="form-control" id="name" aria-describedby="emailHelp" />
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <label htmlFor="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" />
                     </div>
                     <div class="mb-3">
-                        <label for="tag" class="form-label">Tags(optional)</label>
+                        <label htmlFor="tag" class="form-label">Tags(optional)</label>
                         <input type="text" class="form-control" id="tag" aria-describedby="emailHelp" />
                     </div>
                     <div className="btns">

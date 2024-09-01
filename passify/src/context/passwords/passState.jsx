@@ -8,8 +8,26 @@ const pass = [
             "_id": "66cda991229290cb49561d34",
             "user": "66cd4c895801bfa080f2ee89",
             "name": "gmail password",
-            "password": "mimata08",
+            "password": "rgtgxgghgjj",
             "tag": "personal",
+            "date": "2024-08-27T10:25:21.528Z",
+            "__v": 0
+          },
+          {
+            "_id": "66cda991229290cb49561d34",
+            "user": "66cd4c895801bfa080f2ee89",
+            "name": "some password",
+            "password": "ts100000008202",
+            "tag": "personal",
+            "date": "2024-08-27T10:25:21.528Z",
+            "__v": 0
+          },
+          {
+            "_id": "66cda991229290cb49561d34",
+            "user": "66cd4c895801bfa080f2ee89",
+            "name": "git password",
+            "password": "idkkkk",
+            "tag": "None",
             "date": "2024-08-27T10:25:21.528Z",
             "__v": 0
           },
@@ -27,7 +45,7 @@ const pass = [
       const [p ,setPass] = useState(pass);
     
     return(
-        <passContext.Provider values = {{p,setPass}}>
+        <passContext.Provider value = {{p,setPass}}>
             {props.children}
         </passContext.Provider>
     )

@@ -1,5 +1,4 @@
 import React,{useContext,useEffect} from "react";
-import passContext from "../context/passwords/passContext";
 
 function About(){
    

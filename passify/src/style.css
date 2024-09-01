@@ -17,4 +17,32 @@
 }
 .createform {
     border: solid black 2px;
+    margin :auto;
+    height: 70vh;
+    width :50%;
 }
+.showPass {
+
+    height: 40%;
+    width :40%;
+   
+    gap:10px;
+}
+#allPasswords{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:10px;
+}
+.shiftIcons{
+   
+   
+    display: inline;
+   
+}
+i{
+    margin-right: 10px;
+    padding: 5px;
+}
+

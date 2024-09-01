@@ -1,18 +1,17 @@
 import React from "react";
 import { useContext } from "react";
 import passContext from "../context/passwords/passContext";
+import PassItem from "./passItem";
+import '../style.css'
 function View(){
-    const p1 = useContext(passContext);
-    const {p,setPass} = p1;
+    const context = useContext(passContext);
+    const {p,setPass} = context;
     return(
         <>
-        
-        <h1>View</h1>
-        <div>
-        {p.map((e)=>{
-            return <PassItem/>
-
-        })}
+        <div id="allPasswords" >
+            {p.map((e)=>{
+                return <PassItem key = {e.id} e={e}/>
+            })}
         </div>
         </>
     )
