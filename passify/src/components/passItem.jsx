@@ -1,8 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import '../style.css'
+import passContext from "../context/passwords/passContext";
 
 function PassItem(props) {
-    const { e } = props;
+    const context = useContext(passContext);
+   const{DeletePass} = context;
+    const { e,updatePass } = props; // e stands for a password element
     return (
         <>
            
@@ -13,8 +16,8 @@ function PassItem(props) {
                             <p className="card-text">Tag : {e.tag}</p>
                             <p className="card-text">Date : {e.date}</p>
                             <div  className ="shiftIcons" >
-                            <i className="fa-solid fa-trash"></i>
-                            <i className="fa-solid fa-pen-to-square"></i>
+                            <i className="fa-solid fa-trash" onClick={()=>{DeletePass(e._id)}}></i>
+                            <i className="fa-solid fa-pen-to-square" onClick={()=>{updatePass(e)}}></i>
                             </div>
                         </div>
                 </div>

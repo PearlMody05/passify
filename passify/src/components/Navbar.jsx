@@ -21,16 +21,16 @@ function Navbar(){
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link  className={`nav-link {location.path=== "/"}? "active": ""}`} aria-current="page" to="/">Home</Link >
+              <Link  className={`nav-link {location.path=== "/"? "active": ""}`} aria-current="page" to="/">Home</Link >
             </li>
             <li className="nav-item">
-              <Link  className={`nav-link {location.path=== "/"}? "active": ""}`} to="/Create">Create</Link >
+              <Link  className={`nav-link {location.path=== "/"? "active": ""}`} to="/Create">Create</Link >
             </li>
             <li className="nav-item">
-              <Link  className={`nav-link {location.path=== "/"}? "active": ""}`} to="/View">View</Link >
+              <Link  className={`nav-link ${location.path=== "/"? "active": ""}`} to="/View">View</Link >
             </li>
             <li className="nav-item">
-              <Link  className={`nav-link {location.path=== "/"}? "active": ""}`} to="/About">About Us</Link >
+              <Link  className={`nav-link ${location.path=== "/" ? "active": ""}`} to="/About">About Us</Link >
             </li>
           </ul>
         </div>

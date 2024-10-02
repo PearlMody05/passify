@@ -6,7 +6,7 @@ const { body , validationResult, ExpressValidator } = require('express-validator
 
 
 // Route : 1 GET all the passwords from database using GET request after endpoint "/api/passify"
-router.get("/fetchAllPaaswords",fetchUser,async(req,res)=>{
+router.get("/fetchAllPasswords",fetchUser,async(req,res)=>{
     try{
     const passwords = await Password.find({user: req.user.id});
     res.json({passwords})}

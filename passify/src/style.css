@@ -1,7 +1,7 @@
 .navigation{
    position: absolute;
    top:10px;
-    background-color: whitesmoke;
+    background-color:#F0F5E9;
     width: 100%;
 }
 .centre {
@@ -10,16 +10,24 @@
     justify-content: center;
     align-items: center;
 }
+.adjust
+{
+    position: relative;
+    width: 20px;
+}
 
 .btns {
     display:flex;
     gap:10px;
 }
 .createform {
-    border: solid black 2px;
+    border-radius: 15%;
     margin :auto;
     height: 70vh;
     width :50%;
+    letter-spacing: 0.6px; 
+    
+   
 }
 .showPass {
 
@@ -34,6 +42,21 @@
     justify-content: center;
     flex-wrap: wrap;
     gap:10px;
+      
+}
+#icons{
+    display: inline-block;
+    height:50px;
+    line-height: 50px;
+}
+.fa-square-instagram{
+    color:#C13584;
+}
+.fa-facebook{
+    color:#1877F2;
+}
+.fa-twitter{
+ color:#1DA1F2;
 }
 .shiftIcons{
    
@@ -45,4 +68,26 @@ i{
     margin-right: 10px;
     padding: 5px;
 }
+.form-label{
+    font-size: larger;
+}
+.htmlForm-label{
+    font-size: larger;
+}
+.form-control{
+    width: 200%;
+}
+.mb-3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.btn{
+    width:40%;
+}
+.btns{
+    gap:10%;
+}
+
 

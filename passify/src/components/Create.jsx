@@ -1,27 +1,41 @@
-import React from "react";
+import React, { useState,useRef } from "react";
 import "../style.css"
-
+import { useContext } from "react";
+import passContext from "../context/passwords/passContext";
 function Create() {
-   
+    const context = useContext(passContext);
+    const {AddPass}=context;
+    const clearRef = useRef(null);
+    const [p,setPass]= useState({name:"",password :"",tag: ""})
+    const handleClick =(e)=>{
+        e.preventDefault();
+        AddPass(p.name,p.password,p.tag);
+        clearRef.current.click();
+
+    }   
+    const onChange=(event)=>{
+        setPass({...p,[event.target.name]:event.target.value})
+
+    }
     return (
         <>
             <div className="createform centre">
                 <form>
-                    <div class="mb-3">
-                        <label htmlFor="name" class="htmlForm-label">Name</label>
-                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" />
+                    <div className="mb-3">
+                        <label htmlFor="name" className="htmlForm-label"><b>Name</b></label>
+                        <input type="text" className="form-control" name="name" aria-describedby="emailHelp"onChange={onChange}/>
                     </div>
-                    <div class="mb-3">
-                        <label htmlFor="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" />
+                    <div className="mb-3">
+                        <label htmlFor="password" className="form-label"><b>Password</b></label>
+                        <input type="text" className="form-control" name="password"onChange={onChange}/>
                     </div>
-                    <div class="mb-3">
-                        <label htmlFor="tag" class="form-label">Tags(optional)</label>
-                        <input type="text" class="form-control" id="tag" aria-describedby="emailHelp" />
+                    <div className="mb-3">
+                        <label htmlFor="tag" className="form-label"><b>Tags(optional)</b></label>
+                        <input type="text" className="form-control" name="tag" aria-describedby="emailHelp" onChange={onChange}/>
                     </div>
                     <div className="btns">
-                    <button type="submit" class="btn btn-primary">SUBMIT</button>
-                    <button class="btn btn-primary">CLEAR</button>
+                    <button type="submit" className="btn btn-primary" onClick={handleClick}>SUBMIT</button>
+                    <button className="btn btn-primary " ref={clearRef}>CLEAR</button>
                     </div>
                 </form>
             </div>

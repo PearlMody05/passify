@@ -2,7 +2,9 @@ const connectToMongo = require('./db');
 connectToMongo();
 
 const express= require('express')
+var cors = require('cors')
 const app = express();
+app.use(cors())
 
 app.use(express.json()) //this is aplied globally so everywhere routes are parsed 
 // available routes 
