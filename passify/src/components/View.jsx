@@ -14,7 +14,7 @@ function View() {
   const [pass, setPass] = useState({ id:"", ename: "", epassword: "", etag: "" });
   const ref = useRef(null);
   const closeRef = useRef(null);
-
+//this opens modal where i will update password
   const updatePass = (currentPass) => {
     console.log("clicked");
     setPass({
@@ -22,15 +22,15 @@ function View() {
       ename: currentPass.name,
       epassword: currentPass.password,
       etag: currentPass.tag,
-    });
+    }); //this changes state of pass acc to what is changed
     const modalElement = ref.current;
     const modal = new window.bootstrap.Modal(modalElement);
     modal.show();
   };
-
+//this saves changes after i update password on my modal
   const saveChanges = async (e) => {
-    console.log("updating changes.....",pass);
-    EditPass(pass.id, pass.name,pass.password,pass.tag);
+    console.log("updating changes.....",pass); //so pass has my updated password
+    EditPass(pass.id, pass.ename,pass.epassword,pass.etag);
     closeRef.current.click();
     e.preventDefault();
   };

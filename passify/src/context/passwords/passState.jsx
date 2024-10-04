@@ -84,21 +84,23 @@ const PassState = (props)=>{
           body : JSON.stringify({name,password,tag})
 
         });
-        const json = response.json();
-
+        const json = await response.json();
+        let np = JSON.parse(JSON.stringify(p));
         //deleting in client side
-        for(let index=0;index<p.length;index++)
+        for(let index=0;index<np.length;index++)
         {
-          const element = p[index];
+          const element = np[index];
           if(element._id === id)
           {
-            element.name = name;
-            element.password = password;
-            element.tag = tag;
-
+            np[index].name = name;
+            np[index].password = password;
+            np[index].tag = tag;
+            break;
           }
         }
-      }
+        setPass(np);
+      };
+    
 
 
     return(

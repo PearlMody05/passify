@@ -50,9 +50,10 @@ router.put('/updatePassword/:id',fetchUser,async(req,res)=>{
     if(password){newpass.password = password};
     if(tag){newpass.tag = tag};
 
-    //find the password to be updated and update it 
+    //find the password to be updated and update it
     let pass =await Password.findById(req.params.id) 
     if(!pass){
+        console.log(pass)
         return res.status(404).send("not found")
     }
     if(pass.user.toString() != req.user.id) 
