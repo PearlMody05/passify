@@ -45,9 +45,10 @@
       
 }
 #icons{
-    display: inline-block;
-    height:50px;
-    line-height: 50px;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    height:40%;
 }
 .fa-square-instagram{
     color:#C13584;
@@ -58,6 +59,11 @@
 .fa-twitter{
  color:#1DA1F2;
 }
+.fa-linkedin{
+    color:#0A66C2;
+}
+
+
 .shiftIcons{
    
    
@@ -89,5 +95,51 @@ i{
 .btns{
     gap:10%;
 }
+.size{
+    width:50%;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20%;
+}
+.wi{
+    width:100%;
+}
+.signup {
+    padding:0;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 90%; /* Height relative to the parent */
+    width: 80%;  /* Width relative to the parent */
+    position: relative;
+    left: 10%;
+    top:10%;   /* Adjust position relative to the parent */
+  }
+  
+.parent-container {
+    height: 100vh; /* Full viewport height */
+    width: 100%;   /* Full width */
+    overflow-y: hidden;
+  }
+  .login-message-box {
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.login-message {
+    font-size: 1rem;
+    font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ffffff; /* Use white to contrast with the background */
+
+}
+
+
 
 

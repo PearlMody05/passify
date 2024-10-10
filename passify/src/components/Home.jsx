@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import '../style.css'
 function Home(){
     return(
@@ -8,12 +8,13 @@ function Home(){
         <div className = "container"> 
         <h1><u>PASSIFY</u></h1>
         <p><b>This Website helps you store all your passwords at one place!<br/>So now no need find<br/>the password you forgot to keep in mind<br/>With Passify, your passwords are safe and aligned! </b></p>
-        <span id="icons">
-                    <i class="fa-brands fa-square-instagram"></i>
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    </span>
         </div>
+        <span id="icons">
+                    <i className="fa-brands fa-square-instagram" ></i>
+                    <i className="fa-brands fa-facebook"></i>
+                    <i className="fa-brands fa-twitter"></i>
+                    <i className="fa-brands fa-linkedin"></i>
+        </span>
         </>
     )
 }

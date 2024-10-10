@@ -2,13 +2,17 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import passContext from "../context/passwords/passContext";
 import PassItem from "./passItem";
 import "../style.css";
-
+import {useNavigate} from "react-router-dom"
 function View() {
   const context = useContext(passContext);
   const { p, getPass,EditPass } = context;
-
+  let navi =useNavigate();
   useEffect(() => {
-    getPass();
+    if(localStorage.getItem('token')){
+    getPass();}
+    else {
+      navi('/login');
+    }
   }, []);
 
   const [pass, setPass] = useState({ id:"", ename: "", epassword: "", etag: "" });
@@ -117,6 +121,7 @@ function View() {
 
       {/* Displaying all passwords */}
       <div id="allPasswords">
+      <div><b>{p.length===0 && 'Go to create and save your first password'}</b></div>
         {p.map((e) => (
           <PassItem key={e._id} updatePass={updatePass} e={e} />
         ))}

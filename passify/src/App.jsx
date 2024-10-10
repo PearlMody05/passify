@@ -2,12 +2,13 @@ import { useState } from 'react'
 
 import './App.css'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
-import Home from './components/home'
+import Home from './components/Home'
 import View from './components/View'
 import About from './components/About'
 import Create from './components/Create'
 import Login from './components/Login'
-import Navbar from './components/navbar'
+import Navbar from './components/Navbar'
+import Signup from './components/Signup'
 import PassState from './context/passwords/passState'
 
 function App() {
@@ -19,6 +20,14 @@ function App() {
     {
       path : "/about",
       element : <><Navbar/><About/></>
+    },
+    {
+      path : "/Login",
+      element : <><Navbar/><Login/></>
+    },
+    {
+      path : "/Signup",
+      element : <><Navbar/><Signup/></>
     },
     {
       path : "/View",

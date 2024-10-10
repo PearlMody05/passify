@@ -14,7 +14,7 @@ const PassState = (props)=>{
           method: 'GET',
           headers : {
             'Content-Type' : 'application/json',
-            'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZjZDRjODk1ODAxYmZhMDgwZjJlZTg5In0sImlhdCI6MTcyNDczMjAwMX0.fA4-bU9dzbPA0XaPh6g7Amnb3Rr46aCQ8oQd6VMwCzc'
+            'auth-token' : localStorage.getItem('token')
           },
         });
         const data = await response.json();
@@ -31,22 +31,14 @@ const PassState = (props)=>{
           method: 'POST',
           headers : {
             'Content-Type' : 'application/json',
-            'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZjZDRjODk1ODAxYmZhMDgwZjJlZTg5In0sImlhdCI6MTcyNDczMjAwMX0.fA4-bU9dzbPA0XaPh6g7Amnb3Rr46aCQ8oQd6VMwCzc'
+            'auth-token' : localStorage.getItem('token')
           },
           body : JSON.stringify({name,password,tag})
   
         });
 
-
-        let new_pass={"_id": "66cf6f9b91144da8b98c30d1",
-            "user": "66cd4c895801bfa080f2ee89a",
-            "name": name,
-            "password": password,
-            "tag": tag,
-            "date": "2024-08-28T18:42:35.918Z",
-            "__v": 0
-
-        }
+        
+        let new_pass=await response.json();
         setPass(p.concat(new_pass));
 
       }
@@ -58,7 +50,7 @@ const PassState = (props)=>{
           method: 'DELETE',
           headers : {
             'Content-Type' : 'application/json',
-            'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZjZDRjODk1ODAxYmZhMDgwZjJlZTg5In0sImlhdCI6MTcyNDczMjAwMX0.fA4-bU9dzbPA0XaPh6g7Amnb3Rr46aCQ8oQd6VMwCzc'
+            'auth-token' : localStorage.getItem('token')
           },
         });
         const data = await response.json();
@@ -79,7 +71,7 @@ const PassState = (props)=>{
           method: 'PUT',
           headers : {
             'Content-Type' : 'application/json',
-            'auth-token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZjZDRjODk1ODAxYmZhMDgwZjJlZTg5In0sImlhdCI6MTcyNDczMjAwMX0.fA4-bU9dzbPA0XaPh6g7Amnb3Rr46aCQ8oQd6VMwCzc'
+            'auth-token' : localStorage.getItem('token')
           },
           body : JSON.stringify({name,password,tag})
 

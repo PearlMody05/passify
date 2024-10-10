@@ -8,7 +8,9 @@ var jwt = require('jsonwebtoken');
 var fetchuser = require('../middleware/fetchuser')
 
 const JWT_SECRET = "imgonnagetuback";
+
 //Router:1 creating a user using post & no login req
+let success=false;
 router.post("/signUp",[ //adding express validators
     body("name","Enter a valid name").isLength({min: 3}),
     body("email","Enter a valid email").isEmail(),
@@ -17,13 +19,13 @@ router.post("/signUp",[ //adding express validators
 ],async (req,res)=>{
    const errors = validationResult(req);
    if(!errors.isEmpty()){  //if errors is not empty means there are error then return bad request
-    return res.status(400).json({errors : errors.array()}); //if there is error
+    return res.status(400).json({success,errors : errors.array()}); //if there is error
    }
    //now we will check whether its the same email or not 
    try{
    let user = await User.findOne({email : req.body.email});
    if(user){
-    return res.status(500).json({error: "sorry an email with this user already exists"})
+    return res.status(500).json({success,error: "sorry an email with this user already exists"})
    }
 
    //const salt = await bcrypt.genSalt(10);
@@ -45,8 +47,8 @@ const data = {
 }
 
   const authToken = jwt.sign(data,JWT_SECRET);
-  console.log(authToken);
-  res.json(user) //giving out put as jason 
+  success=true;
+  res.json({success,authToken}); //giving auth token to the client 
 }
 catch(err){
   console.log(err.message) 
@@ -58,7 +60,7 @@ catch(err){
 
 
 
-//authenticate a user using post no login req
+//authenticate a user using post
 //login 
 
 //Router:2
@@ -66,6 +68,7 @@ router.post('/login',[
   body("email","Enter a valid email").isEmail(),
   body('password','password must be atleast 8 charecters long ').isLength({min : 8}),
 ],async (req,res) =>{
+  let success = false;
   // to check if there are errors by express validators
   const errors = validationResult(req);
   if(!errors.isEmpty()){ //if there is an error returning bad request
@@ -77,11 +80,12 @@ router.post('/login',[
   try{
     const user = await User.findOne({email});  
     if(!user){
+      success = false;
       res.status(400).json({error : "Please login with correct credentials"})
     }
     const passcompare = await bcrypt.compare(password,user.password)
     if(!passcompare){
-      res.status(400).send("Please login with correct credentials") //if password doesnt match
+      res.status(400).send(success,"Please login with correct credentials") //if password doesnt match
     }
     const data = {
       user : {
@@ -89,7 +93,8 @@ router.post('/login',[
       }
     }
     const authToken = jwt.sign(data,JWT_SECRET)
-    res.json({authToken})
+    success=true;
+    res.json({success,authToken})
   }
   catch(error){
     console.log(error.message);

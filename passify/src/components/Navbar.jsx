@@ -1,6 +1,7 @@
 import React ,{useEffect} from "react";
 import { Link,useLocation } from "react-router-dom";
 import '../style.css'
+import { useNavigate } from "react-router-dom";
 
 function Navbar(){
   let location = useLocation();
@@ -9,6 +10,11 @@ function Navbar(){
     console.log(location.pathname);
   },[location]
   );
+  let nav = useNavigate();
+    const handleLogout =()=>{
+      localStorage.removeItem('token');
+      nav('/login');
+    }
 
     return(
        
@@ -33,8 +39,11 @@ function Navbar(){
               <Link  className={`nav-link ${location.path=== "/" ? "active": ""}`} to="/About">About Us</Link >
             </li>
           </ul>
-        </div>
-      </div>
+       </div>
+       {(!localStorage.getItem('token'))?<>
+        <Link style={{width:"10%"}} className="btn btn-outline-secondary mx-2" to="/login" role="button">Login</Link>
+        <Link type="button" style={{width:"10%"}} className="btn btn-outline-secondary" to="/Signup" role="button">Sign Up</Link></>:<><button type="button" style={{width:"10%"}} className="btn btn-outline-secondary" to="/logout" role="button" onClick={handleLogout}>Logout</button></>}
+      </div>:
     </nav>
     
         
